@@ -19,7 +19,7 @@ RUN set -ex; \
 
 RUN set -ex; \
   addgroup --gid 2000 -S traefik; \
-  adduser --uid traefik -D -S -h / -s /sbin/nologin -G traefik traefik
+  adduser --uid 2000 -D -S -h / -s /sbin/nologin -G traefik traefik
 
 COPY --chmod=755 entrypoint.sh /
 USER traefik
