@@ -1,6 +1,5 @@
-ARG TRAEFIK_VERSION=v3.2.0
-
 FROM alpine:3.20
+ARG TRAEFIK_VERSION=v3.2.0
 RUN apk --no-cache add ca-certificates tzdata
 RUN set -ex; \
   apkArch="$(apk --print-arch)"; \
