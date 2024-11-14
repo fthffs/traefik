@@ -19,8 +19,8 @@ jobs:
         id-token: write
 
     steps:
+      - uses: actions/checkout@v4
       - name: Checkout repository and grab traefik version
-        uses: actions/checkout@v4
         run: echo "TRAEFIK_VERSION=$(grep -o -m 1 'TRAEFIK_VERSION=.*' Dockerfile | awk -F '=' '{print $2}')" >> $GITHUB_ENV
 
       - name: Log in to the Container registry
