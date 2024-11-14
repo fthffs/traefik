@@ -33,5 +33,5 @@ LABEL org.opencontainers.image.vendor="fthffs" \
   org.opencontainers.image.source="https://github.com/fthffs/traefik" \
   org.opencontainers.image.title="Traefik rootless" \
   org.opencontainers.image.description="A rootless modern reverse-proxy" \
+  org.opencontainers.image.documentation="https://docs.traefik.io" \
   org.opencontainers.image.version="v3.2.0"
-  org.opencontainers.image.documentation="https://docs.traefik.io"
