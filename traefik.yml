@@ -1,0 +1,32 @@
+# Absolutely bare minimum config, to verify traefik is working rootless.
+# See: https://doc.traefik.io/traefik/getting-started/configuration-overview/
+
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+entryPoints:
+  web:
+    address: :8383
+
+  websecure:
+    address: :4433
+
+providers:
+  providersThrottleDuration: 2s
+
+  # File provider for connecting things that are outside of docker / defining middleware
+  file:
+    filename: /etc/traefik/fileConfig.yml
+    watch: true
+
+log:
+  level: DEBUG
+  filePath: /var/log/traefik.log
+
+accessLog:
+  filePath: /var/log/access.log
+
+api:
+  insecure: true
+  dashboard: true

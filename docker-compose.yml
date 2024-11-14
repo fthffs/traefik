@@ -1,0 +1,16 @@
+services:
+  traefik:
+    container_name: traefik-rootless
+    image: sha256:8180f7c22ba2e29ae34fec5039ef40aade11fd658ae8a7911564ffa54de75f09
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - "./acme.json:/etc/traefik/acme.json"
+      - "./fileConfig.yml:/etc/traefik/fileConfig.yml:ro"
+      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./access.log:/var/log/access.log"
+      - "./traefik.log:/var/log/traefik.log"
+    ports: # Change as needed, remember to change in traefik.yml too.
+      - 8085:8080 # DASHBOARD
+      - 8383:8383 # HTTP
+      - 4433:4433 # HTTPS
