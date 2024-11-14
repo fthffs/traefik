@@ -1,4 +1,4 @@
-ARG TRAEFIK_VERSION=""
+ARG TRAEFIK_VERSION=v3.2.0
 
 FROM alpine:3.20
 RUN apk --no-cache add ca-certificates tzdata
@@ -33,5 +33,5 @@ LABEL org.opencontainers.image.vendor="fthffs" \
   org.opencontainers.image.source="https://github.com/fthffs/traefik" \
   org.opencontainers.image.title="Traefik rootless" \
   org.opencontainers.image.description="A rootless modern reverse-proxy" \
-  org.opencontainers.image.version="" \
+  org.opencontainers.image.version="v3.2.0"
   org.opencontainers.image.documentation="https://docs.traefik.io"
