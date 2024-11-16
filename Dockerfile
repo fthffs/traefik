@@ -1,3 +1,12 @@
+FROM alpine:3.20 AS builder
+ARG PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+ARG PLUGIN_GIT_BRANCH=v1.3.5
+RUN set -ex; \
+  apk update; \
+  apk add git; \
+  git clone ${PLUGIN_GIT_REPO} ./plugins-local/src/github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin --depth 1 \
+  --single-branch --branch ${PLUGIN_GIT_BRANCH}
+
 FROM alpine:3.20
 ARG TRAEFIK_VERSION=v3.2.0
 RUN apk --no-cache add ca-certificates tzdata
@@ -16,6 +25,8 @@ RUN set -ex; \
   tar xzvf /tmp/traefik.tar.gz -C /usr/local/bin traefik; \
   rm -f /tmp/traefik.tar.gz; \
   chmod +x /usr/local/bin/traefik
+
+COPY --from=builder --chmod=755 /plugins-local /plugins-local
 
 RUN set -ex; \
   addgroup --gid 2000 -S traefik; \

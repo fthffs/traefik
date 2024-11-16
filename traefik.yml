@@ -30,3 +30,8 @@ accessLog:
 api:
   insecure: true
   dashboard: true
+
+experimental:
+  localPlugins:
+    crowdsec-bouncer-traefik-plugin:
+      moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
