@@ -1,4 +1,4 @@
-FROM alpine:3.20 AS builder
+FROM alpine:3.22 AS builder
 ARG PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
 ARG PLUGIN_GIT_BRANCH=v1.3.5
 RUN set -ex; \
@@ -7,7 +7,7 @@ RUN set -ex; \
   git clone ${PLUGIN_GIT_REPO} ./plugins-local/src/github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin --depth 1 \
   --single-branch --branch ${PLUGIN_GIT_BRANCH}
 
-FROM alpine:3.20
+FROM alpine:3.22
 ARG TRAEFIK_VERSION=v3.5.0
 RUN apk --no-cache add ca-certificates tzdata
 RUN set -ex; \
