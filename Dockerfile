@@ -1,4 +1,4 @@
-FROM alpine:3.20 AS builder
+FROM alpine:3.22 AS builder
 ARG CROWDSEC_PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
 ARG CROWDSEC_PLUGIN_GIT_BRANCH=v1.4.5
 ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
