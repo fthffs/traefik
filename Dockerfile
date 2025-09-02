@@ -1,14 +1,18 @@
 FROM alpine:3.20 AS builder
-ARG PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-ARG PLUGIN_GIT_BRANCH=v1.3.5
+ARG CROWDSEC_PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+ARG CROWDSEC_PLUGIN_GIT_BRANCH=v1.4.5
+ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
+ARG OIDC_PLUGIN_GIT_BRANCH=v0.15.0
 RUN set -ex; \
   apk update; \
   apk add git; \
-  git clone ${PLUGIN_GIT_REPO} ./plugins-local/src/github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin --depth 1 \
-  --single-branch --branch ${PLUGIN_GIT_BRANCH}
+  git clone ${CROWDSEC_PLUGIN_GIT_REPO} ./plugins-local/src/github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin --depth 1 \
+  --single-branch --branch ${CROWDSEC_PLUGIN_GIT_BRANCH} ; \
+  git clone ${OIDC_PLUGIN_GIT_REPO} ./plugins-local/src/github.com/sevensolutions/traefik-oidc-auth --depth 1 \
+  --single-branch --branch ${OIDC_PLUGIN_GIT_BRANCH}
 
-FROM alpine:3.20
-ARG TRAEFIK_VERSION=v3.2.3
+FROM alpine:3.22
+ARG TRAEFIK_VERSION=v3.5.1
 RUN apk --no-cache add ca-certificates tzdata
 RUN set -ex; \
   apkArch="$(apk --print-arch)"; \
@@ -44,4 +48,4 @@ LABEL org.opencontainers.image.vendor="fthffs" \
   org.opencontainers.image.title="Traefik rootless" \
   org.opencontainers.image.description="A rootless modern reverse-proxy" \
   org.opencontainers.image.documentation="https://docs.traefik.io" \
-  org.opencontainers.image.version="v3.2.3"
+  org.opencontainers.image.version="v3.5.1"
