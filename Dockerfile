@@ -12,7 +12,7 @@ RUN set -ex; \
   --single-branch --branch ${OIDC_PLUGIN_GIT_BRANCH}
 
 FROM alpine:3.22
-ARG TRAEFIK_VERSION=v3.6.0
+ARG TRAEFIK_VERSION=v3.6.1
 RUN apk --no-cache add ca-certificates tzdata
 RUN set -ex; \
   apkArch="$(apk --print-arch)"; \
@@ -48,4 +48,4 @@ LABEL org.opencontainers.image.vendor="fthffs" \
   org.opencontainers.image.title="Traefik rootless" \
   org.opencontainers.image.description="A rootless modern reverse-proxy" \
   org.opencontainers.image.documentation="https://docs.traefik.io" \
-  org.opencontainers.image.version="v3.6.0"
+  org.opencontainers.image.version="v3.6.1"
