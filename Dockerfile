@@ -1,13 +1,9 @@
 FROM alpine:3.20 AS builder
-ARG CROWDSEC_PLUGIN_GIT_REPO=https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-ARG CROWDSEC_PLUGIN_GIT_BRANCH=v1.4.5
 ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
 ARG OIDC_PLUGIN_GIT_BRANCH=v0.15.0
 RUN set -ex; \
   apk update; \
   apk add git; \
-  git clone ${CROWDSEC_PLUGIN_GIT_REPO} ./plugins-local/src/github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin --depth 1 \
-  --single-branch --branch ${CROWDSEC_PLUGIN_GIT_BRANCH} ; \
   git clone ${OIDC_PLUGIN_GIT_REPO} ./plugins-local/src/github.com/sevensolutions/traefik-oidc-auth --depth 1 \
   --single-branch --branch ${OIDC_PLUGIN_GIT_BRANCH}
 
