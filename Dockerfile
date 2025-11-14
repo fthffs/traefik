@@ -1,4 +1,4 @@
-FROM alpine:3.20 AS builder
+FROM alpine:3.22 AS builder
 ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
 ARG OIDC_PLUGIN_GIT_BRANCH=v0.15.0
 RUN set -ex; \
