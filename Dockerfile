@@ -1,6 +1,6 @@
 FROM alpine:3.20 AS builder
 ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
-ARG OIDC_PLUGIN_GIT_BRANCH=v0.15.0
+ARG OIDC_PLUGIN_GIT_BRANCH=v0.17.0
 RUN set -ex; \
   apk update; \
   apk add git; \
