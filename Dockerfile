@@ -1,4 +1,4 @@
-FROM alpine:3.20 AS builder
+FROM alpine:3.23 AS builder
 ARG OIDC_PLUGIN_GIT_REPO=https://github.com/sevensolutions/traefik-oidc-auth
 ARG OIDC_PLUGIN_GIT_BRANCH=v0.17.0
 RUN set -ex; \
@@ -7,7 +7,7 @@ RUN set -ex; \
   git clone ${OIDC_PLUGIN_GIT_REPO} ./plugins-local/src/github.com/sevensolutions/traefik-oidc-auth --depth 1 \
   --single-branch --branch ${OIDC_PLUGIN_GIT_BRANCH}
 
-FROM alpine:3.22
+FROM alpine:3.23
 ARG TRAEFIK_VERSION=v3.6.7
 RUN apk --no-cache add ca-certificates tzdata
 RUN set -ex; \
