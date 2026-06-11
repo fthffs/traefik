@@ -10,7 +10,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Checkout repo, grab traefik version
         id: getVersion
         run: echo "TRAEFIK_VERSION=$(grep -o -m 1 'TRAEFIK_VERSION=.*' Dockerfile | awk -F '=' '{print $2}' | sed 's/v//')" >> $GITHUB_ENV
